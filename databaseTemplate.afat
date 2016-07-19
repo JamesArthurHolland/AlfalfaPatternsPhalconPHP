@@ -1,0 +1,23 @@
+{{ALFALFA -o {{Entity}}Db.php}}
+<?php
+
+namespace {{NAMESPACE}}\{{Entity}};
+
+use {{NAMESPACE}}\Stdlib\MysqlDbAbstract;
+use {{NAMESPACE}}\Stdlib\StorageInterface;
+
+class {{Entity}}Db extends MysqlDbAbstract implements StorageInterface
+{
+    protected $table = '{{entity}}s';// INSERT TABLE NAME;
+    protected $mapper;
+
+    public function __construct($mapper)
+    {
+        $this->setMapper($mapper);
+    }
+    
+    protected function getDbName()
+    {
+        return $this->dbName;
+    }
+}

@@ -1,0 +1,45 @@
+{{ALFALFA -o {{Entity}}Filter.php}}
+<?php
+
+namespace {{NAMESPACE}};
+
+use ASA\Stdlib\FilterTrait;
+
+class {{Entity}}Filter
+{
+    use FilterTrait;
+
+{{VARS}}
+    protected ${{var}};
+{{/VARS}}
+
+    public function __construct(
+    {{VARS}}
+		{{KEY}}${{var}} = null,{{/KEY}}
+		{{NOT-KEY NOT-LAST}}${{var}} = null,{{/NOT-KEY}}
+		{{NOT-KEY LAST}}${{var}} = null{{/NOT-KEY}}
+	{{/VARS}}
+    ) {
+    {{VARS}}
+		{{KEY}}$this->set{{Var}}(${{var}}){{/KEY}}
+		{{NOT-KEY NOT-LAST}}->set{{Var}}(${{var}}){{/NOT-KEY}}
+		{{NOT-KEY LAST}}->set{{Var}}(${{var}});{{/NOT-KEY}}
+	{{/VARS}}
+    }
+
+{{VARS}}
+	public function set{{Var}}(${{var}})
+	{
+	    $this->{{var}} = ${{var}};
+	    return $this;
+	}
+{{/VARS}}
+
+{{VARS}}
+	public function get{{Var}}()
+	{
+	    return $this->{{var}};
+	}
+{{/VARS}}
+
+}
